@@ -1,11 +1,37 @@
-<h1>Signup!</h1>
+<h1>Signup</h1>
 
-<%= form_for :user, url: '/users' do |f| %>
-
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
-
+<%= form_for :user, url: '/users' do%>
+  <div class="row">
+    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6">
+      <label>First Name</label>
+      <input type="text" class="form-control" name="user[first_name]" id="user_first_name" placeholder="First Name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6">
+      <label>Last Name</label>
+      <input type="text" class="form-control" name="user[last_name]" id="user_last_name" placeholder="Last Name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6">
+      <label>Email</label>
+      <input type="email" class="form-control" name="user[email]" id="user_email" placeholder="Email">
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6">
+      <label>Password</label>
+      <input type="password" class="form-control" name="user[password]" id="user_password" placeholder="Password">
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6">
+      <label>Password Confirmation</label>
+      <input type="password" class="form-control" name="user[password_confirmation]" id="user_password_confirmation" placeholder="Password">
+    </div>
+  </div>
+  <div class="row">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
 <% end %>

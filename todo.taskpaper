@@ -1,3 +1,3 @@
 Feature/Users:
-☐ Change 'name' input field to two fields: 'first_name' and 'last_name'
+✔ Change 'name' input field to two fields: 'first_name' and 'last_name' @done (17-02-16 13:05)
 ☐ Try to change routes to be consitent
