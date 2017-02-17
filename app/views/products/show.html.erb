@@ -27,40 +27,44 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-12">
-        <%= form_for [@product, @review] do |f| %>
+      <div class="col-sm-8">
+        <% if current_user %>
+          <%= form_for [@product, @review] do |f| %>
 
-          <% if f.object.errors.any? %>
-            <div class="alert alert-danger">
-              <strong>The following errors prevented saving:</strong>
-              <ul>
-                <% f.object.errors.full_messages.each do |error| %>
-                  <li><%= error %></li>
-                <% end %>
-              </ul>
+            <% if f.object.errors.any? %>
+              <div class="alert alert-danger">
+                <strong>The following errors prevented saving:</strong>
+                <ul>
+                  <% f.object.errors.full_messages.each do |error| %>
+                    <li><%= error %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.label :description %>
+              <%= f.text_area :description, class: "form-control"%>
             </div>
+
+            <div class="form-group">
+              <%= f.label :rating %>
+              <%= select(:review, :rating, [5, 4, 3, 2, 1], include_blank: true)%>
+            </div>
+
+            <%= f.submit 'Submit Review', class: 'btn btn-primary' %>
           <% end %>
-
-          <div class="form-group">
-            <%= f.label :description %>
-            <%= f.text_area :description, class: "form-control"%>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :rating %>
-            <%= select(:review, :rating, [5, 4, 3, 2, 1], include_blank: true)%>
-          </div>
-
-          <%= f.submit 'Submit Review', class: 'btn btn-primary' %>
-
-
         <% end %>
-
         <h3>Reviews</h3>
-        <% @product.reviews.each do |r| %>
+        <% @product.reviews.reverse.each do |r| %>
           <div class="review">
             <div class="review-user-name"><%= "#{r.user.first_name} #{r.user.last_name}" %></div>
-            <div class="review-rating"><%= star_rating(r.rating) %></div>
+            <div class="review-rating">
+              <%= star_rating(r.rating) %>
+              <% if r.user == current_user %>
+                <%= link_to fa_icon('trash'), [@product, r], class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
             <div class="review-description"><%= r.description %></div>
           </div>
         <% end %>
