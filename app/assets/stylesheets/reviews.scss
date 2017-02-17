@@ -1,0 +1,19 @@
+.product-detail {
+  .review {
+    margin: 10px 0;
+
+    .review-user-name {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .review-rating {
+      color: #e4b11e;
+      letter-spacing: 2px;
+    }
+
+    .review-description {
+      margin-top: 5px;
+    }
+  }
+}

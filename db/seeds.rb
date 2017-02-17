@@ -165,5 +165,4 @@ Review.create!({
   description: 'Comfortable, but a little shocking.'
 })
 
-
 puts "DONE!"
