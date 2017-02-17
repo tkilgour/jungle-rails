@@ -29,6 +29,7 @@
     <div class="row">
       <div class="col-sm-8">
         <% if current_user %>
+          <h4 class="new-review-head">Review this product</h4>
           <%= form_for [@product, @review] do |f| %>
 
             <% if f.object.errors.any? %>
@@ -42,14 +43,14 @@
               </div>
             <% end %>
 
-            <div class="form-group">
-              <%= f.label :description %>
-              <%= f.text_area :description, class: "form-control"%>
+            <div class="form-group rating-dropdown">
+              <%= f.label :rating %>
+              <%= select(:review, :rating, [5, 4, 3, 2, 1])%>
             </div>
 
             <div class="form-group">
-              <%= f.label :rating %>
-              <%= select(:review, :rating, [5, 4, 3, 2, 1], include_blank: true)%>
+              <%= f.label "Comments (optional)" %>
+              <%= f.text_area :description, class: "form-control"%>
             </div>
 
             <%= f.submit 'Submit Review', class: 'btn btn-primary' %>
@@ -58,12 +59,13 @@
         <h3>Reviews</h3>
         <% @product.reviews.reverse.each do |r| %>
           <div class="review">
-            <div class="review-user-name"><%= "#{r.user.first_name} #{r.user.last_name}" %></div>
+            <div class="review-user-name"><%= "#{r.user.first_name} #{r.user.last_name}" %>
+              <% if r.user == current_user %>
+                <%= link_to 'Delete Review', [@product, r], class: 'btn btn-xs btn-danger delete-review', method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
             <div class="review-rating">
               <%= star_rating(r.rating) %>
-              <% if r.user == current_user %>
-                <%= link_to fa_icon('trash'), [@product, r], class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
-              <% end %>
             </div>
             <div class="review-description"><%= r.description %></div>
           </div>

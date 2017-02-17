@@ -4,9 +4,16 @@ class ReviewsController < ApplicationController
 
   def create
     product = Product.find(params[:product_id])
-    product.reviews.create!(description: params[:review][:description], rating: params[:review][:rating], user: current_user)
 
-    redirect_to product_path(product.id)
+    if params[:review][:rating] == ""
+      redirect_to product_path(product.id)
+    else
+      product.reviews.create!(description: params[:review][:description], rating: params[:review][:rating], user: current_user)
+
+      redirect_to product_path(product.id)
+
+    end
+
   end
 
   def destroy
