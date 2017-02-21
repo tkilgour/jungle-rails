@@ -165,4 +165,26 @@ Review.create!({
   description: 'Comfortable, but a little shocking.'
 })
 
+## USERS
+
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+User.create!({
+  first_name: 'Bobby Joe',
+  last_name: 'Jacobson',
+  email: 'bj@jacobson.net',
+  password: 'hellohello',
+  password_confirmation: 'hellohello'
+})
+
+User.create!({
+  first_name: 'Joey Bob',
+  last_name: 'Jackson',
+  email: 'jb@jackson.edu',
+  password: 'hellohello',
+  password_confirmation: 'hellohello'
+})
+
 puts "DONE!"

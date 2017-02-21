@@ -65,27 +65,27 @@ RSpec.describe User, type: :model do
     end
 
     it 'should authenticate' do
-      login = @user.authenticate_with_credentials('bjb@bobby.ca', 'forksforks')
+      login = User.authenticate_with_credentials('bjb@bobby.ca', 'forksforks')
       expect(login).to be_truthy
     end
 
     it 'should authenticate when uppercase email' do
-      login = @user.authenticate_with_credentials('BJB@bobby.ca', 'forksforks')
+      login = User.authenticate_with_credentials('BJB@bobby.ca', 'forksforks')
       expect(login).to be_truthy
     end
 
     it 'should not authenticate when password is incorrect' do
-      login = @user.authenticate_with_credentials('bjb@bobby.ca', 'forksfork')
+      login = User.authenticate_with_credentials('bjb@bobby.ca', 'forksfork')
       expect(login).to be_falsey
     end
 
     it 'should authenticate with case-sensitve password' do
-      login = @user.authenticate_with_credentials('bjb@bobby.ca', 'FORKSFORKS')
+      login = User.authenticate_with_credentials('bjb@bobby.ca', 'FORKSFORKS')
       expect(login).to be_falsey
     end
 
     it 'should authenticate when email has leading/trailing spaces' do
-      login = @user.authenticate_with_credentials(' bjb@bobby.ca ', 'forksforks')
+      login = User.authenticate_with_credentials(' bjb@bobby.ca ', 'forksforks')
       expect(login).to be_truthy
     end
   end
