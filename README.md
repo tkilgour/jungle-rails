@@ -2,7 +2,7 @@
 
 A mini e-commerce application built with Rails 4.2 as a project for Lighthouse Labs.
 
-![](./public/uploads/tmp/products_screenshot.png)
+![](./public/products_screenshot.png)
 
 ## Setup
 
