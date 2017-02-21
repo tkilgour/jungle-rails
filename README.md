@@ -1,6 +1,11 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 as a project for Lighthouse Labs.
+A mini e-commerce application built with Rails 4.2 as a project for Lighthouse Labs. Implemented features on an inherited code-base such as:
+
+* customer accounts and authentication
+* product reviews
+* sold-out product behaviour
+* order details page after checkout
 
 ![](./public/products_screenshot.png)
 
